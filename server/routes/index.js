@@ -91,9 +91,16 @@ router.post("/login", async (req, res, next) => {
           objectId: user._id,
           role: user.role,
         };
-        const token = jwt.sign({ payload }, process.env.JWT_SECRET, {
-          expiresIn: "3d",
-        });
+        // const token = jwt.sign({ payload }, process.env.JWT_SECRET, {
+        //   expiresIn: "3d",
+        // });
+        const token = jwt.sign(
+          { payload },
+          "KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp",
+          {
+            expiresIn: "3d",
+          }
+        );
         return res
           .status(200)
           .json({ message: "Login successful!", token: token });
